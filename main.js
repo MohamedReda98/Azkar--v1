@@ -108,13 +108,6 @@
                  "content": "اللّهُـمَّ عالِـمَ الغَـيْبِ وَالشّـهادَةِ فاطِـرَ السّماواتِ وَالأرْضِ رَبَّ كـلِّ شَـيءٍ وَمَليـكَه ، أَشْهَـدُ أَنْ لا إِلـهَ إِلاّ أَنْت ، أَعـوذُ بِكَ مِن شَـرِّ نَفْسـي وَمِن شَـرِّ الشَّيْـطانِ وَشِرْكِهِ ، وَأَنْ أَقْتَـرِفَ عَلـى نَفْسـي سوءاً أَوْ أَجُـرَّهُ إِلـى مُسْـلِم."
              },
              {
-                 "category": "stop",
-                 "count": "stop",
-                 "description": "stpo",
-                 "reference": "stop",
-                 "content": "stop"
-             },
-             {
                  "category": "أذكار الصباح",
                  "count": "3",
                  "description": "",
@@ -956,7 +949,7 @@ function makeCards(name) {
         H2.innerHTML = `${el["content"]}`;
         let pText = document.createTextNode(`${el["description"]}`);
         let spanText = document.createTextNode(`${el["reference"]}`);
-        let buttonText = document.createTextNode(`${el["count"]}`);
+        Button.innerHTML = +el["count"];
         // adding the attributes
         testomonials.setAttribute("class","testimonials");
         myMainDiv.setAttribute("class","content");
@@ -965,18 +958,55 @@ function makeCards(name) {
         P.setAttribute("class","description");
         Span.setAttribute("class","reference");
         Button.setAttribute("id","contactUs");
+        let id = `${category.indexOf(name)}.${myzekr[name].indexOf(el)}`;
+        Button.setAttribute("onclick",`buttonClick(${id})`);
         // append child for the tree
         // H2.appendChild(h2Text);
         P.appendChild(pText);
         Span.appendChild(spanText);
-        Button.appendChild(buttonText);
+        // Button.appendChild(buttonText);
         otherDiv.appendChild(H2);
         otherDiv.appendChild(P);
         otherDiv.appendChild(Span);
         otherDiv.appendChild(Button);
         myMainDiv.appendChild(otherDiv);
         testomonials.appendChild(myMainDiv);
+        testomonials.setAttribute('id',`${id}`);
+        Button.setAttribute('class',`${id}`);
         document.body.appendChild(testomonials);
     })
 }
 
+function buttonClick(id){
+    if (id%1 ===0){
+        id = id+".0";
+    }
+    let button = document.getElementsByClassName(`${id}`)[0];
+    console.log(button);
+    if (button.textContent>0){
+        button.innerHTML--;
+    }
+    setTimeout(()=>{if (button.innerHTML<=0){
+        chechZero(id)
+    }},1000);
+
+
+}
+function chechZero(id) {
+    let card = document.getElementById(`${id}`);
+    card.style.display = 'none';
+}
+function checkDate() {
+    if (window.localStorage.getItem('lastDate')){
+        let lastDate = window.localStorage.getItem('lastDate');
+        let now = Date.now();
+        if (lastDate.getDate() === now.getDate()){
+
+        }else {
+            
+        }
+    }else {
+        let now = Date.now();
+        window.localStorage.setItem('lastDate', now);
+    }
+}

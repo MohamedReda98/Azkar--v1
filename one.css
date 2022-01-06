@@ -34,15 +34,6 @@ body{
 	border-radius: 50%;
 	margin-right: 50px;
 }
-@media (max-width : 767px) {
-	.testimonials .content{
-		flex-direction: column;
-		text-align: center;
-	}
-	.testimonials .content img{
-		margin: 0 auto 30px;
-	}
-}
 .testimonials .text{
 	text-align: center;
 	line-height: 2;
@@ -62,7 +53,7 @@ body{
 	margin: 30px auto;
 	background-size: 200% auto;
 	color: blue;
-	min-width: 100px;
+	min-width: 400px;
 	min-height: 100px;
 	width: fit-content;
 	text-decoration: none;
@@ -71,7 +62,7 @@ body{
 	box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
 	background-image: linear-gradient(to right, rgba(36, 198, 220, 0.33) 0%, rgba(81, 74, 157, 0.34) 51%, rgba(36, 198, 220, 0.3) 100%);
 	transition: 0.5s;
-	border-radius: 50%;
+	border-radius: 10px;
 }
 .content button:hover{
 	background-position: right center;
