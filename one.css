@@ -1,0 +1,110 @@
+body{
+	/*background-image: url("21-1.jpg");*/
+	background-size: cover;
+	direction: rtl;
+}
+
+.testimonials{
+	position: relative;
+}
+.testimonials .content{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 30px;
+	border-radius: 6px;
+	box-shadow: 0 10px 40px -14px rgba(0,0,0,0.25);
+	background-image: linear-gradient(to right, rgba(36, 198, 220, 0.33) 0%, rgba(81, 74, 157, 0.34) 51%, rgba(36, 198, 220, 0.3) 100%);
+	background-size: 200% auto;
+	transition: 1s;
+	padding: 10px;
+}
+.content span{
+	display: flex;
+	justify-content: left;
+	margin: 10px;
+}
+.testimonials .content:hover{
+	transform: translateY(10px);
+	background-position: right center;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.testimonials .content img{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	margin-right: 50px;
+}
+.testimonials .text{
+	text-align: center;
+	line-height: 2;
+	border-bottom: 1px solid #ccc;
+}
+.testimonials .testimonials .text p{
+	font-size: 14px;
+	color: #777777;
+	text-align: right;
+	margin-bottom: 10px;
+}
+.content button{
+	border: none;
+	outline: none;
+	display: block;
+	padding: 15px 30px;
+	margin: 30px auto;
+	background-size: 200% auto;
+	color: blue;
+	min-width: 400px;
+	min-height: 100px;
+	width: fit-content;
+	text-decoration: none;
+	text-transform: capitalize;
+	font-weight: bold;
+	box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+	background-image: linear-gradient(to right, rgba(36, 198, 220, 0.33) 0%, rgba(81, 74, 157, 0.34) 51%, rgba(36, 198, 220, 0.3) 100%);
+	transition: 0.5s;
+	border-radius: 10px;
+}
+.content button:hover{
+	background-position: right center;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+/*start components   */
+.main-heading{
+	text-align: center;
+}
+.main-heading h2{
+	font-weight: normal;
+	font-size: 40px;
+	position: relative;
+	margin-bottom: 70px;
+	text-transform: uppercase;
+}
+.main-heading h2::before{
+	content: "";
+	position: absolute;
+	background-color: #333;
+	width: 120px;
+	height: 2px;
+	bottom: -30px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.main-heading h2::after{
+	content: "";
+	position: absolute;
+	background-color: white;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	border: 2px solid #333;
+	bottom: -38px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.main-heading p{
+	width: 550px;
+	max-width: 100%;
+	margin: 0 auto 100px;
+	line-height: 2;
+	color: #777;
+}
