@@ -909,14 +909,23 @@
      }
  ;
 const category = Object.keys(myzekr);
-
+const navBar = document.querySelector('.nav-bar');
 category.forEach((cat)=>{
+    addToHeader(cat);
     makeHeader(cat);
     makeCards(cat);
 })
+ function addToHeader(name){
+     let li =document.createElement("li");
+     let a =document.createElement("a");
+     a.innerText = name;
+     a.setAttribute('href',`#${name}`)
+     li.appendChild(a);
+     navBar.appendChild(li);
+ }
 function makeHeader(name){
         // Create main elements
-    let myMainDiv =document.createElement("div");
+        let myMainDiv =document.createElement("div");
         let otherDiv =document.createElement("div");
         let H2 =document.createElement("h2");
         let P =document.createElement("p");
@@ -925,6 +934,7 @@ function makeHeader(name){
         let pText = document.createTextNode(`إسعد نفسك بذكر الله في جميع اوقاتك \n${myzekr[name].length} ذكر من ${name}`);
         // adding the attributes
         myMainDiv.setAttribute("class","testimonials");
+        myMainDiv.setAttribute("id",`${name}`);
         otherDiv.setAttribute("class","main-heading");
         // append child for the tree
         H2.appendChild(h2Text);
@@ -959,7 +969,7 @@ function makeCards(name) {
         Span.setAttribute("class","reference");
         Button.setAttribute("id","contactUs");
         let id = `${category.indexOf(name)}.${myzekr[name].indexOf(el)}`;
-        Button.setAttribute("onclick",`buttonClick(${id})`);
+        Button.setAttribute("onclick",`buttonClick('${id}')`);
         // append child for the tree
         // H2.appendChild(h2Text);
         P.appendChild(pText);
@@ -978,9 +988,7 @@ function makeCards(name) {
 }
 
 function buttonClick(id){
-    if (id%1 ===0){
-        id = id+".0";
-    }
+    console.log(`${id}`);
     let button = document.getElementsByClassName(`${id}`)[0];
     console.log(button);
     if (button.textContent>0){
@@ -989,8 +997,6 @@ function buttonClick(id){
     setTimeout(()=>{if (button.innerHTML<=0){
         chechZero(id)
     }},1000);
-
-
 }
 function chechZero(id) {
     let card = document.getElementById(`${id}`);
@@ -1003,10 +1009,36 @@ function checkDate() {
         if (lastDate.getDate() === now.getDate()){
 
         }else {
-            
+
         }
     }else {
         let now = Date.now();
         window.localStorage.setItem('lastDate', now);
     }
 }
+ // sticky navbar
+ let header = document.querySelector('header');
+ let menu = document.querySelector('.menu-bar');
+ let nav = document.querySelector('.nav-bar');
+
+ window.addEventListener('scroll',()=>{
+     header.classList.toggle('shadow',window.scrollY > 0);
+ });
+ // menu bar
+ menu.onclick = () => {
+     nav.classList.toggle('active');
+ }
+ window.onscroll = () => {
+     nav.classList.remove('active');
+ }
+ // dark mode
+ let darkmode = document.querySelector("#dark-mode");
+ darkmode.onclick = () => {
+     if (darkmode.classList.contains('fa-moon')){
+         darkmode.classList.replace('fa-moon','fa-sun');
+         document.body.classList.add('active');
+     }else {
+         darkmode.classList.replace('fa-sun','fa-moon');
+         document.body.classList.remove('active');
+     }
+ }
